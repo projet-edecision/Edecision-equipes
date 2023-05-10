@@ -57,11 +57,18 @@ public class equipeController {
         return (List<membres_equipesEntity>) repositoryMembresEquipes.findAll();
     }
 
-    @GetMapping("/membresEquipes/{uuidMembre}")
+    @GetMapping("/membresListEquipes/{uuidMembre}")
     List<membres_equipesEntity> filterMembresEquipes(@PathVariable("uuidMembre") UUID uuidMembre) {
 
 
         return repositoryMembresEquipes.findByUuidMembre(uuidMembre);
+    }
+
+    @GetMapping("/equipesListMembres/{uuidEquipe}")
+    List<membres_equipesEntity> filterEquipesMembres(@PathVariable("uuidEquipe") UUID uuidEquipe) {
+
+
+        return repositoryMembresEquipes.findByUuidEquipe(uuidEquipe);
     }
 
     @PostMapping("/membresEquipes")
