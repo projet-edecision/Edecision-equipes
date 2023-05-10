@@ -9,9 +9,9 @@ public class equipeController {
     private final equipeRepository repositoryEquipe;
     private final membres_equipesRepository repositoryMembresEquipes;
 
-    equipeController(equipeRepository repository, membres_equipesRepository repository1) {
-        this.repositoryEquipe = repository;
-        this.repositoryMembresEquipes = repository1;
+    equipeController(equipeRepository repositoryEquipe, membres_equipesRepository repositoryMembresEquipes) {
+        this.repositoryEquipe = repositoryEquipe;
+        this.repositoryMembresEquipes = repositoryMembresEquipes;
     }
 
 
@@ -68,7 +68,7 @@ public class equipeController {
     }
 
     @DeleteMapping("/membresEquipes/{id}")
-    void deleteEmployee(@PathVariable String uuidMembre) {
+    void deleteMembreEquipe(@PathVariable String uuidMembre) {
         repositoryMembresEquipes.deleteByuuidMembre(uuidMembre);
     }
 
