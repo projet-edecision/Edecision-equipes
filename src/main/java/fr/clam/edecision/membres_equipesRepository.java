@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, String> {
+public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, Long> {
     membres_equipesRepository findByuuidMembre(String uuidMembre);
-    membres_equipesRepository deleteByuuidMembre(String uuidMembre);
 
 }

@@ -56,10 +56,10 @@ public class equipeController {
         return (List<membres_equipesEntity>) repositoryMembresEquipes.findAll();
     }
 
-    @GetMapping("/membresEquipes/{id}")
-    membres_equipesEntity oneMembreEquipe(@PathVariable String uuidMembre) {
+    @GetMapping("/membresEquipes/{uuidMembre}")
+    List<membres_equipesEntity> filterMembresEquipes(@PathVariable("uuidMembre") String uuidMembre) {
 
-        return (membres_equipesEntity) repositoryMembresEquipes.findByuuidMembre(uuidMembre);
+        return (List<membres_equipesEntity>) repositoryMembresEquipes.findByuuidMembre(uuidMembre);
     }
 
     @PostMapping("/membresEquipes")
@@ -68,8 +68,8 @@ public class equipeController {
     }
 
     @DeleteMapping("/membresEquipes/{id}")
-    void deleteMembreEquipe(@PathVariable String uuidMembre) {
-        repositoryMembresEquipes.deleteByuuidMembre(uuidMembre);
+    void deleteMembreEquipe(@PathVariable("id") Long id) {
+        repositoryMembresEquipes.deleteById(id);
     }
 
 
