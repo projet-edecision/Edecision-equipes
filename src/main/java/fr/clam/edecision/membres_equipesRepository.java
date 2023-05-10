@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, String> {
-    membres_equipesRepository findByuuidMember(String uuidMember);
-    membres_equipesRepository deleteByuuidMember(String uuidMember);
+    membres_equipesRepository findByuuidMembre(String uuidMembre);
+    membres_equipesRepository deleteByuuidMembre(String uuidMembre);
 
 }

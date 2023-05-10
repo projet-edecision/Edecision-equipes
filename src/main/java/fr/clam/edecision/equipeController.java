@@ -57,9 +57,9 @@ public class equipeController {
     }
 
     @GetMapping("/membresEquipes/{id}")
-    membres_equipesEntity oneMembreEquipe(@PathVariable String uuidMember) {
+    membres_equipesEntity oneMembreEquipe(@PathVariable String uuidMembre) {
 
-        return (membres_equipesEntity) repositoryMembresEquipes.findByuuidMember(uuidMember);
+        return (membres_equipesEntity) repositoryMembresEquipes.findByuuidMembre(uuidMembre);
     }
 
     @PostMapping("/membresEquipes")
@@ -68,8 +68,8 @@ public class equipeController {
     }
 
     @DeleteMapping("/membresEquipes/{id}")
-    void deleteEmployee(@PathVariable String uuidMember) {
-        repositoryMembresEquipes.deleteByuuidMember(uuidMember);
+    void deleteEmployee(@PathVariable String uuidMembre) {
+        repositoryMembresEquipes.deleteByuuidMembre(uuidMembre);
     }
 
 

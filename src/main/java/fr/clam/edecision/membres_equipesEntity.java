@@ -5,13 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.UUID;
-import java.io.Serializable;
 @Entity
 @Table(name = "membres_equipes")
 public class membres_equipesEntity {
     private String uuidEquipe;
     private String uuidMembre;
+    @Id
+    @GeneratedValue
+    private Long id;
 
     public membres_equipesEntity(){}
 
@@ -33,5 +34,13 @@ public class membres_equipesEntity {
 
     public void setUuidMembre(String uuidMembre) {
         this.uuidMembre = uuidMembre;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
