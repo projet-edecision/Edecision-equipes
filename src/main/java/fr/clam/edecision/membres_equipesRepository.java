@@ -5,10 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, Long> {
-    membres_equipesRepository findByuuidMembre(String uuidMembre);
-
+public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, UUID> {
+    List<membres_equipesEntity> findByUuidMembre(UUID uuidMembre);
 }

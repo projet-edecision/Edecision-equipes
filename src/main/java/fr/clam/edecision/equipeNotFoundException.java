@@ -1,8 +1,10 @@
 package fr.clam.edecision;
 
+import java.util.UUID;
+
 public class equipeNotFoundException extends RuntimeException {
-    equipeNotFoundException(String id) {
-        super("Could not find employee " + id);
+    equipeNotFoundException(UUID id) {
+        super("Could not find employee " + id.toString());
     }
 }
 

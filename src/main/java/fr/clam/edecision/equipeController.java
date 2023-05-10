@@ -1,6 +1,7 @@
 package fr.clam.edecision;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -28,14 +29,14 @@ public class equipeController {
 
 
     @GetMapping("/equipe/{id}")
-    equipeEntity oneEquipe(@PathVariable String id) {
+    equipeEntity oneEquipe(@PathVariable UUID id) {
 
         return repositoryEquipe.findById(id)
                 .orElseThrow(() -> new equipeNotFoundException(id));
     }
 
     @PutMapping("/equipe/{id}")
-    equipeEntity editEquipe(@RequestBody equipeEntity newEquipe, @PathVariable String id) {
+    equipeEntity editEquipe(@RequestBody equipeEntity newEquipe, @PathVariable UUID id) {
 
         return repositoryEquipe.findById(id)
                 .map(equipe -> {
@@ -57,9 +58,10 @@ public class equipeController {
     }
 
     @GetMapping("/membresEquipes/{uuidMembre}")
-    List<membres_equipesEntity> filterMembresEquipes(@PathVariable("uuidMembre") String uuidMembre) {
+    List<membres_equipesEntity> filterMembresEquipes(@PathVariable("uuidMembre") UUID uuidMembre) {
 
-        return (List<membres_equipesEntity>) repositoryMembresEquipes.findByuuidMembre(uuidMembre);
+
+        return repositoryMembresEquipes.findByUuidMembre(uuidMembre);
     }
 
     @PostMapping("/membresEquipes")
@@ -68,7 +70,7 @@ public class equipeController {
     }
 
     @DeleteMapping("/membresEquipes/{id}")
-    void deleteMembreEquipe(@PathVariable("id") Long id) {
+    void deleteMembreEquipe(@PathVariable("id") UUID id) {
         repositoryMembresEquipes.deleteById(id);
     }
 

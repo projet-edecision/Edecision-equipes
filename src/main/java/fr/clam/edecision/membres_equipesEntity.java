@@ -1,46 +1,48 @@
 package fr.clam.edecision;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.UUID;
 
 @Entity
 @Table(name = "membres_equipes")
 public class membres_equipesEntity {
-    private String uuidEquipe;
-    private String uuidMembre;
     @Id
-    @GeneratedValue
-    private Long id;
+    private UUID id;
+    private UUID uuidEquipe;
+    private UUID uuidMembre;
 
-    public membres_equipesEntity(){}
+    public membres_equipesEntity(){
+        this.id = UUID.randomUUID();
+    }
 
-    public membres_equipesEntity(String uuidEquipe, String uuidMembre){
+    public membres_equipesEntity(UUID uuidEquipe, UUID uuidMembre){
+        this.id = UUID.randomUUID();
         this.uuidEquipe = uuidEquipe;
         this.uuidMembre = uuidMembre;
     }
-    public String getUuidEquipe() {
+
+    public UUID getUuidEquipe() {
         return uuidEquipe;
     }
 
-    public void setUuidEquipe(String uuidEquipe) {
+    public void setUuidEquipe(UUID uuidEquipe) {
         this.uuidEquipe = uuidEquipe;
     }
 
-    public String getUuidMembre() {
+    public UUID getUuidMembre() {
         return uuidMembre;
     }
 
-    public void setUuidMembre(String uuidMembre) {
+    public void setUuidMembre(UUID uuidMembre) {
         this.uuidMembre = uuidMembre;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public UUID getId() {
+        return id;
     }
 
-    public Long getId() {
-        return id;
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
