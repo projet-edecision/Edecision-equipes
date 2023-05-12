@@ -3,7 +3,9 @@ package fr.clam.edecision;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class equipeController {
@@ -40,7 +42,6 @@ public class equipeController {
 
         return repositoryEquipe.findById(id)
                 .map(equipe -> {
-                    equipe.setUuid(newEquipe.getUuid());
                     equipe.setName(newEquipe.getName());
                     equipe.setProjectId(newEquipe.getProjectId());
                     return repositoryEquipe.save(equipe);
@@ -50,6 +51,7 @@ public class equipeController {
                     return repositoryEquipe.save(newEquipe);
                 });
     }
+
 
 
     @GetMapping("/membresEquipes")
@@ -73,6 +75,15 @@ public class equipeController {
 
     @PostMapping("/membresEquipes")
     membres_equipesEntity newMembreEquipe(@RequestBody membres_equipesEntity newMembreEquipe) {
+        equipeEntity uuidCommunaute = repositoryEquipe.findByName("Communaute");
+        if (uuidCommunaute == null){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Equipe Communaute Not FOUND"
+            );
+        }
+        if (repositoryMembresEquipes.findByUuidMembreAndUuidEquipe(newMembreEquipe.getUuidMembre(), uuidCommunaute.getUuid()) == null){
+            repositoryMembresEquipes.save(new membres_equipesEntity(uuidCommunaute.getUuid(), newMembreEquipe.getUuidMembre()));
+        }
         return repositoryMembresEquipes.save(newMembreEquipe);
     }
 

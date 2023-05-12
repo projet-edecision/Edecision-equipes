@@ -8,4 +8,7 @@ import java.util.UUID;
 
 @Repository
 public interface equipeRepository extends CrudRepository<equipeEntity, UUID> {
+
+    equipeEntity findByName(String name);
+
 }
