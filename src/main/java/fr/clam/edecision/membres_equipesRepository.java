@@ -13,4 +13,5 @@ import java.util.UUID;
 public interface membres_equipesRepository extends CrudRepository<membres_equipesEntity, UUID> {
     List<membres_equipesEntity> findByUuidMembre(UUID uuidMembre);
     List<membres_equipesEntity> findByUuidEquipe(UUID uuidEquipe);
+    membres_equipesEntity findByUuidMembreAndUuidEquipe(UUID uuidMembre, UUID uuidEquipe);
 }
