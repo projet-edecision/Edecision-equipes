@@ -68,7 +68,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/equipes:latest
         
     - name: install ssh keys
       # check this thread to understand why its needed:
@@ -79,4 +79,4 @@ jobs:
         ssh-keyscan -H ${{ secrets.SERVER_IP }} > ~/.ssh/known_hosts
 
     - name: Deploy to server
-      run: ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "cd /home/ubuntu/Edecision/equipes && docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth:latest && docker compose up -d"
+      run: ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} "cd /home/ubuntu/Edecision/equipes && docker pull ${{ secrets.DOCKERHUB_USERNAME }}/equipes:latest && docker compose up -d"
